@@ -10,6 +10,7 @@ import UIKit
 import TesseractOCR
 
 class ViewController: UIViewController , G8TesseractDelegate {
+    @IBOutlet weak var imageView: UIImageView!
 
     @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
@@ -33,6 +34,18 @@ class ViewController: UIViewController , G8TesseractDelegate {
         print("Recognition progress \(tesseract.progress) % ")
     }
 
+    @IBAction func chooseImage(_ sender: Any) {
+        
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a Source" , preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action:UIAlertAction) in }))
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {(action:UIAlertAction) in }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+        
+        
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
